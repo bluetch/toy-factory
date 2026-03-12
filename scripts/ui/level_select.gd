@@ -10,7 +10,7 @@ func _ready() -> void:
 	back_button.pressed.connect(SceneManager.goto_main_menu)
 
 	for i in range(1, 4):
-		var card := get_node_or_null("LevelsContainer/LevelCard%d" % i)
+		var card: Node = get_node_or_null("LevelsContainer/LevelCard%d" % i)
 		if card == null:
 			continue
 		level_cards.append(card)

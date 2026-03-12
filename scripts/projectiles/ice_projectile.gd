@@ -24,7 +24,7 @@ func _on_hit() -> void:
     query.collision_mask = 2
     var results := space_state.intersect_shape(query)
     for result in results:
-        var body := result["collider"] as Node2D
+        var body: Node2D = result["collider"] as Node2D
         if body != null and body.is_in_group("enemies"):
             _damage_enemy(body)
             if body.has_method("apply_slow"):

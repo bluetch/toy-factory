@@ -44,7 +44,7 @@ func populate(tower: Node) -> void:
 	sell_button.text = "Sell\n+%d 💰" % sell_val
 
 func _on_upgrade_pressed() -> void:
-	var gw := get_tree().get_first_node_in_group("game_world")
+	var gw: Node = get_tree().get_first_node_in_group("game_world")
 	if gw and gw.has_method("upgrade_selected_tower"):
 		gw.upgrade_selected_tower()
 	# Refresh display
@@ -54,7 +54,7 @@ func _on_upgrade_pressed() -> void:
 		hide()
 
 func _on_sell_pressed() -> void:
-	var gw := get_tree().get_first_node_in_group("game_world")
+	var gw: Node = get_tree().get_first_node_in_group("game_world")
 	if gw and gw.has_method("sell_selected_tower"):
 		gw.sell_selected_tower()
 	hide()

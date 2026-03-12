@@ -95,7 +95,7 @@ func load_data() -> void:
 	var raw_text := file.get_as_text()
 	file.close()
 
-	var parsed := JSON.parse_string(raw_text)
+	var parsed: Variant = JSON.parse_string(raw_text)
 	if parsed == null or not parsed is Dictionary:
 		push_error("SaveManager: Save file at '%s' is malformed. Resetting to defaults." % SAVE_PATH)
 		_data = _default_data()

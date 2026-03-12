@@ -107,6 +107,6 @@ func _on_pause_pressed() -> void:
 func _on_next_wave_pressed() -> void:
 	next_wave_btn.hide()
 	# GameWorld owns WaveManager, look it up
-	var wm := get_tree().get_first_node_in_group("wave_manager")
+	var wm: Node = get_tree().get_first_node_in_group("wave_manager")
 	if wm and wm.has_method("start_next_wave"):
 		wm.start_next_wave()
