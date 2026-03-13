@@ -13,6 +13,7 @@ extends Control
 func _ready() -> void:
 	hide()
 	EventBus.victory_triggered.connect(_on_victory)
+	next_level_button.pressed.connect(_on_next_level_pressed)
 	main_menu_button.pressed.connect(_on_main_menu_pressed)
 
 func _on_victory() -> void:
@@ -22,23 +23,28 @@ func _on_victory() -> void:
 
 	var next_level := level_id + 1
 	if next_level <= SaveManager.MAX_LEVEL:
-		next_level_button.text = "Next Level (%d)" % next_level
-		# Reconnect each time to avoid duplicate connections on retry
-		if not next_level_button.pressed.is_connected(_go_next_level):
-			next_level_button.pressed.connect(_go_next_level)
-		_next_level_id = next_level
+		next_level_button.text     = "Next Level (%d)" % next_level
+		next_level_button.disabled = false
 	else:
-		next_level_button.text     = "🏆 You Win!"
-		next_level_button.disabled = true
+		# Last level cleared — offer epilogue
+		next_level_button.text     = "觀看結局 ▶"
+		next_level_button.disabled = false
 
 	show()
 
-## Stored so the lambda can be disconnected safely
-var _next_level_id: int = 0
-
-func _go_next_level() -> void:
+func _on_next_level_pressed() -> void:
 	AudioManager.play_ui_click()
-	SceneManager.goto_level(_next_level_id)
+	var level_id   := GameManager.current_level_id
+	var next_level := level_id + 1
+	if next_level <= SaveManager.MAX_LEVEL:
+		SceneManager.goto_level_outro(level_id, func() -> void:
+			SceneManager.goto_level(next_level)
+		)
+	else:
+		# Play epilogue then return to main menu
+		SceneManager.goto_story("epilogue", func() -> void:
+			SceneManager.goto_main_menu()
+		)
 
 func _on_main_menu_pressed() -> void:
 	AudioManager.play_ui_click()

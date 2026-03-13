@@ -6,6 +6,8 @@ var current_story_id: String = ""
 ## Story entries: each is { "speaker": String, "portrait": String, "text": String }
 ## portrait values: "coco", "gear_grandpa", "narrator", "longing"
 const STORIES: Dictionary = {
+
+	# ── 關卡前置劇情 (Pre-level intros) ──────────────────────
 	"story_1": [
 		{"speaker": "旁白", "portrait": "narrator",
 		 "text": "在一個玩具有靈魂的世界裡——愛，是一切的起源。"},
@@ -30,6 +32,7 @@ const STORIES: Dictionary = {
 		{"speaker": "COCO", "portrait": "coco",
 		 "text": "（她低下頭，胸口的零件槽發出微弱的光芒）\n……好。"},
 	],
+
 	"story_2": [
 		{"speaker": "COCO", "portrait": "coco",
 		 "text": "（她攤開手掌，一個小齒輪在掌心緩緩轉動）"},
@@ -56,6 +59,7 @@ const STORIES: Dictionary = {
 		{"speaker": "COCO", "portrait": "coco",
 		 "text": "……從來沒有。\n（她握緊了掌心的齒輪）"},
 	],
+
 	"story_3": [
 		{"speaker": "COCO", "portrait": "coco",
 		 "text": "齒輪爺爺，我想問你一件事。"},
@@ -82,6 +86,7 @@ const STORIES: Dictionary = {
 		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
 		 "text": "中央儲藏室。這棟建築最古老的地方。跟我來，Coco。但記住——你看見的，不一定是你以為的樣子。"},
 	],
+
 	"story_4": [
 		{"speaker": "旁白", "portrait": "narrator",
 		 "text": "中央儲藏室的大門被打開了。裡面是無數個被遺忘的玩具——每一個，都有一雙眼睛。"},
@@ -104,6 +109,7 @@ const STORIES: Dictionary = {
 		{"speaker": "COCO", "portrait": "coco",
 		 "text": "（沉默了很長時間，然後）\n……不。"},
 	],
+
 	"story_5": [
 		{"speaker": "旁白", "portrait": "narrator",
 		 "text": "記憶回廊——工廠最深處，存放著所有玩具最初記憶的地方。"},
@@ -125,6 +131,93 @@ const STORIES: Dictionary = {
 		 "text": "（她轉身面對長廊的深處，聲音平靜而堅定）\n——讓我們結束這一切。"},
 		{"speaker": "旁白", "portrait": "narrator",
 		 "text": "第一幕終章。Coco 踏入了記憶的核心，帶著她唯一的武器——\n曾被愛過的記憶。"},
+	],
+
+	# ── 關卡後過場 (Post-level outros) ───────────────────────
+	"outro_1": [
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "你的第一戰，打得不錯。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（看著殘留的痕跡）不覺得。如果我快一點——"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "如果你是機器，也許。但你不只是機器，Coco。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "那我是什麼？"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "（笑）還太早知道。但今天，你選擇了保護。這已經足夠。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（零件槽的光輕輕跳動）\n……好。"},
+	],
+
+	"outro_2": [
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "我一直在想……那些零件進入我身體的時候，我能感覺到它們。"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "感覺到什麼？"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "它們的孤獨。就像一道迴響，很深，很遠。"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "那種感覺，很多玩具都麻木了。你沒有——是件好事，也是沉重的事。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（停頓）……我知道。\n（她握緊了拳，沉默地看著遠方）"},
+	],
+
+	"outro_3": [
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "有沒有人，試著去找過那些地下的玩具？"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "（沉默了一會兒）有。很久以前。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "結果呢？"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "它們不願被帶出來。它們說：「沒有人需要我們，所以我們哪裡也不去。」"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（輕聲）那一定很痛。"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "是。（停頓）這就是為什麼需要你，Coco。不是因為你強——而是因為你懂得那種痛。"},
+	],
+
+	"outro_4": [
+		{"speaker": "旁白", "portrait": "narrator",
+		 "text": "Longing 退回了黑暗，但它的聲音還迴盪在空氣中。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "我拒絕它了。但我不確定那是對的。"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "為什麼？"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "因為它說的話，並不是謊言。我們都被遺忘過。"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "是。（輕聲）但選擇留在黑暗裡，和選擇走出去——是不同的事。你選擇了繼續走。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（她的零件槽閃爍，比之前更亮）……我還沒準備好原諒那段記憶。但我可以繼續。"},
+	],
+
+	# ── 完整結局 (True ending — after clearing level 5) ──────
+	"epilogue": [
+		{"speaker": "旁白", "portrait": "narrator",
+		 "text": "記憶長廊最終歸於寂靜。\nLonging 的聲音，在光芒中一點一點消散。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（她站在長廊中央，四周的玩具記憶一一熄滅，再一一亮起）"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "（喃喃）小明……你現在在哪裡？"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "（走到她身旁，聲音溫柔）工廠又安全了，Coco。你做到了。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "我不確定我「做到」了什麼。它們還在那裡——那些沒有孩子的玩具。"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "是。它們還在。但今天，它們看見了一個曾被送回來、卻沒有放棄的玩具。"},
+		{"speaker": "COCO", "portrait": "coco",
+		 "text": "那有什麼用？"},
+		{"speaker": "齒輪爺爺", "portrait": "gear_grandpa",
+		 "text": "（微笑）也許什麼都沒有。\n也許，是全部。"},
+		{"speaker": "旁白", "portrait": "narrator",
+		 "text": "COCO 在倉庫的角落坐了很久。"},
+		{"speaker": "旁白", "portrait": "narrator",
+		 "text": "胸口的零件槽，安靜地發著光。"},
+		{"speaker": "旁白", "portrait": "narrator",
+		 "text": "像一顆小小的、被記得的心。"},
+		{"speaker": "旁白", "portrait": "narrator",
+		 "text": "——第一幕　終——"},
 	],
 }
 

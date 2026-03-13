@@ -101,6 +101,15 @@ func story_complete() -> void:
 	else:
 		goto_main_menu()
 
+## Play a post-level outro cutscene (outro_N), then call on_complete.
+## If no outro exists for level_id, calls on_complete immediately.
+func goto_level_outro(level_id: int, on_complete: Callable) -> void:
+	var outro_id := "outro_%d" % level_id
+	if StoryDatabase.has_story(outro_id):
+		goto_story(outro_id, on_complete)
+	else:
+		on_complete.call()
+
 # ── Private helpers ──────────────────────────────────────────
 
 ## Tween _overlay alpha to [target] over FADE_DURATION seconds.

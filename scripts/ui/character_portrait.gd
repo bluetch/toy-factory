@@ -1,13 +1,28 @@
 ## CharacterPortrait — procedurally draws story character portraits.
-## Call set_character(portrait_id) to switch characters.
+## Call set_character(portrait_id) to switch instantly, or
+## fade_to(portrait_id) to cross-fade with a tween.
 class_name CharacterPortrait
 extends Node2D
 
 var _character: String = "narrator"
+var _tween: Tween = null
 
+## Instant switch with no animation.
 func set_character(character_id: String) -> void:
 	_character = character_id
 	queue_redraw()
+
+## Fade out → swap character → fade in.
+func fade_to(new_character: String) -> void:
+	if _tween:
+		_tween.kill()
+	_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	_tween.tween_property(self, "modulate:a", 0.0, 0.12)
+	_tween.tween_callback(func() -> void:
+		_character = new_character
+		queue_redraw()
+	)
+	_tween.tween_property(self, "modulate:a", 1.0, 0.22)
 
 func _draw() -> void:
 	match _character:
